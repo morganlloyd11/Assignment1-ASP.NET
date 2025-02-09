@@ -4,6 +4,19 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 
+// LOGIN & REGISTER
+
+// LOGIN
+app.MapPost("/login", () =>
+{
+    return "staff log in";
+});
+
+app.MapPost("/register", () =>
+{
+    return "staff registration";
+});
+
 //BOOK ROUTES
 
 // GET ALL BOOKS
@@ -112,5 +125,20 @@ app.MapPut("/borrowings/{id}", (HttpContext context) =>
     var borrowingID = context.Request.RouteValues["id"];
     return "update borrowing with ID number" + " " + borrowingID;
 });
+
+// REPORTING 
+
+app.MapGet("/reports", () =>
+{
+    return "generate reports";
+});
+
+// OVERDUE
+
+app.MapGet("/overdue", () => {
+    return "overdue books";
+});
+
+
 
 app.Run();
